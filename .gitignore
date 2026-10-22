@@ -5,6 +5,8 @@ out/
 .env.*
 !.env.example
 leashed-id/.data/
+leashed-id/AGENTS.md
+leashed-id/next-env.d.ts
 *.log
 *.tsbuildinfo
 .DS_Store

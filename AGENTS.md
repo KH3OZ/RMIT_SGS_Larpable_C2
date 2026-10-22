@@ -29,6 +29,7 @@ Why the agent encrypts its own copy: TideCloak `doEncrypt` locks data to the acc
 - Only Khoa's laptop runs TideCloak (Docker, localhost:8080, realm `nextjs-test`). Teammates cannot reach it.
 - Everyone else uses `NEXT_PUBLIC_DECRYPT_MODE=fake`. Your pages MUST render without a TideCloak login in fake mode. Do not add login gating; Khoa wires it.
 - `npm run init` and Docker are Khoa's only. `init/realm.json` is read only by `npm run init`. Later role changes go through the Tide admin console (Roles, then QEA Approvals). Log out and back in after any role change.
+- In fake mode the browser console shows '[TideCloak] Failed to load config ... /adapter.json: 404'. This is expected. Do NOT try to fix it or touch the TideCloak provider.
 
 ## Shared contract (`leashed-id/lib/contract.ts`)
 All encryption and decryption go through `encryptField` and `decryptField` from `leashed-id/lib/decrypt/index.ts`. The fake and real versions return the same types. `reason: "denied"` means a missing Tide role; `"error"` means anything else; `raw` carries the raw SDK message for the dev panel.
