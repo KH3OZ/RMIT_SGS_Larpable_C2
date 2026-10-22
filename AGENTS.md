@@ -20,7 +20,7 @@ Why the agent encrypts its own copy: TideCloak `doEncrypt` locks data to the acc
 - Demo beats 3 to 5 MUST run on real TideCloak. The fake decrypt is for building only.
 - Wording: "the agent cannot decrypt any field it was not granted". NEVER "unhackable". Denial banner: `Denied: the agent has no Tide decrypt role for cccd_address`, with the raw SDK error underneath.
 - Edit only files you own (see Ownership). Tell the team before changing a shared file.
-- NEVER add a dependency, delete a file, or touch `init/`, `tidecloak.json`, middleware or the TideCloak provider without asking. Those are Khoa's.
+- NEVER add a dependency, delete a file, or touch `init/`, `tidecloak.json`, middleware/proxy.ts or the TideCloak provider without asking. Those are Khoa's.
 - Build only what is in `docs/TASKS.md`: one form, four tags, one agent, one denial. No extra features, no refactors.
 - UI text in English, sample data in Vietnamese.
 
@@ -36,7 +36,7 @@ All encryption and decryption go through `encryptField` and `decryptField` from 
 ## Ownership (paths relative to `leashed-id/` unless they start at the repo root)
 | Person | Owns | Done when |
 | --- | --- | --- |
-| Khoa | `lib/decrypt/tide.ts`, `init/`, `tidecloak.json`, TideCloak provider and middleware, accounts, roles, admins | Agent decrypts name, DOB and number; address is denied with the real error; a grant sits pending in QEA |
+| Khoa | `lib/decrypt/tide.ts`, `init/`, `tidecloak.json`, TideCloak provider and middleware/proxy.ts, accounts, roles, admins | Agent decrypts name, DOB and number; address is denied with the real error; a grant sits pending in QEA |
 | Khánh | `app/setup/`, `app/agent/`, `app/api/map-labels/`, `lib/decrypt/fake.ts`, `lib/llm/` | Hotel form fills end to end in fake mode; "Simulate compromised agent" forces the address request |
 | Duy | `app/hotel-form/`, `app/ciphertext/`, `app/api/store/`, root `README.md`, submission | Form shows varied labels and the highlighted injection; ciphertext view lists stored blobs; README overview is 300 words or fewer |
 | Minh | `lib/fixtures/`, root `docs/DEMO_SCRIPT.md`, root `video/` | Fixtures cover 2+ label variants; .mp4 under 100 MB by 16:45 |
